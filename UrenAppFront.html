@@ -13,7 +13,7 @@
                 concole.log(this.responseText);
                 document.getElementById("uitkomst").innerHTML = theObject.name;
             }
-            xhr.open("GET", "http://localhost:8090/api/urenapp/all-employees", true);
+            xhr.open("GET", "http://localhost:8082/api/urenapp/all-employees", true);
             xhr.send();
         }
         function post() {
@@ -25,7 +25,7 @@
             xhr.onreadystatechange = function () {
                 console.log("answer in console");
             }
-            xhr.open("POST", "http://localhost:8090/api/urenapp/new-employee", true);
+            xhr.open("POST", "http://localhost:8082/api/urenapp/new-employee", true);
             xhr.setRequestHeader("Content-Type", "application/json");
 
             xhr.send(objJSON);
@@ -53,7 +53,7 @@
                 }
                 document.getElementById("gettingalltheemployees").innerHTML = employeeString;
             }
-            xhr.open("GET", "http://localhost:8090/api/urenapp/all-employees", true)
+            xhr.open("GET", "http://localhost:8082/api/urenapp/all-employees", true)
             xhr.send();
         }
 
@@ -76,7 +76,7 @@
 
 
     <hr>
-    <hr>
+    <hr> 
     <input type="button" onclick="tothebackend()" value="button to the back">
 </body>
 
