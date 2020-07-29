@@ -70,6 +70,17 @@
             xhr.setRequestHeader("Content-type", "application/json")
             xhr.send(objJSON);
         }
+
+        function fireEmployee() {
+            //make request to delete employee by ID
+            var xhr = new XMLHttpRequest();
+            var id = document.getElementById("empID").value;
+            xhr.onreadystatechange = function () {
+                console.log("employee was fired :(")
+            }
+            xhr.open("DELETE", "http://localhost:8090/api/urenapp/delete/employee/" +id, true);
+            xhr.send();
+        }
     </script>
 
 </head>
@@ -86,10 +97,14 @@
 
     <div>
         <h1>Give employee a raise!</h1>
-        <input type= text id=employeeID placeholder="Employee ID"><input type= text id= newSalary placeholder="New salary">
-<input type = button onclick=changeSalary() value="submit">
+        <input type=text id=employeeID placeholder="Employee ID"><input type=text id=newSalary placeholder="New salary">
+        <input type=button onclick=changeSalary() value="submit">
     </div>
 
+    <div>
+<h1>The economy is bad. Let's fire some people.</h1>
+<input type=text id=empID placeholder="Employee ID"><input type="button" onclick=fireEmployee() value="Fire!">
+    </div>
     <hr>
     <hr>
     <input type="button" onclick="tothebackend()" value="button to the back">
