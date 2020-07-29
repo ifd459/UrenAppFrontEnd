@@ -56,10 +56,31 @@
             xhr.open("GET", "http://localhost:8082/api/urenapp/all-employees", true)
             xhr.send();
         }
+        function changeSalary() {
+            var xhr = new XMLHttpRequest();
+            var id = document.getElementById("employeeID").value;
+            var obj = {};
+            obj.salary = document.getElementById("newSalary").value;
+            objJSON = JSON.stringify(obj);
+            xhr.onreadystatechange = function () {
+                console.log("the salary has been changed!")
+            }
+            //here are the calls to the endpoint
+            xhr.open("PUT", "http://localhost:8090/api/urenapp/update/employee/" + id, true);
+            xhr.setRequestHeader("Content-type", "application/json")
+            xhr.send(objJSON);
+        }
 
-
-
-
+        function fireEmployee() {
+            //make request to delete employee by ID
+            var xhr = new XMLHttpRequest();
+            var id = document.getElementById("empID").value;
+            xhr.onreadystatechange = function () {
+                console.log("employee was fired :(")
+            }
+            xhr.open("DELETE", "http://localhost:8090/api/urenapp/delete/employee/" +id, true);
+            xhr.send();
+        }
     </script>
 
 </head>
@@ -74,7 +95,16 @@
     </div>
     <input type=button onclick=getEmployees() value="Get all employees">
 
+    <div>
+        <h1>Give employee a raise!</h1>
+        <input type=text id=employeeID placeholder="Employee ID"><input type=text id=newSalary placeholder="New salary">
+        <input type=button onclick=changeSalary() value="submit">
+    </div>
 
+    <div>
+<h1>The economy is bad. Let's fire some people.</h1>
+<input type=text id=empID placeholder="Employee ID"><input type="button" onclick=fireEmployee() value="Fire!">
+    </div>
     <hr>
     <hr> 
     <input type="button" onclick="tothebackend()" value="button to the back">
